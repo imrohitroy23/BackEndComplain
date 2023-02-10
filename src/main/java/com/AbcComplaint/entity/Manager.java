@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,13 +18,17 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Manager {
 	
 	@Id
@@ -36,9 +41,9 @@ public class Manager {
 	@CreationTimestamp
 	private LocalDate createdOn;
 	
-	@ElementCollection
-	@JoinTable(name = "manager_pincode",joinColumns = @JoinColumn(name = "manager_id"))
-	private Set<String> zipcode;
+		
+	@Column
+	private String zipcode;
 	
 	
 }
